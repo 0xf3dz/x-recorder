@@ -140,7 +140,7 @@ Create `docker-compose.yml` with this content:
 ```yaml
 services:
   xspaces-recorder:
-    image: cjmaxik/twspace-dl:latest
+    image: ghcr.io/0xf3dz/twspace-dl@sha256:54f661ade6a16a8ba9f54703e4c43f8c18b1e4a0ee59870f737cd81a54cb9fe2
     container_name: xspaces-recorder
     restart: unless-stopped
     user: "${PUID}:${PGID}"
@@ -311,6 +311,6 @@ Do not add automatic deletion until you define a retention period. Copy required
 
 ## Source references
 
-- `twspace-dl`: https://github.com/cjmaxik/twspace-dl
-- Upstream monitor: https://github.com/cjmaxik/twspace-dl/blob/main/monitor.sh
-- Upstream container file: https://github.com/cjmaxik/twspace-dl/blob/main/Dockerfile
+- Recorder source: https://github.com/0xf3dz/twspace-dl
+- Monitor source: https://github.com/0xf3dz/twspace-dl/blob/main/monitor.sh
+- Container source: https://github.com/0xf3dz/twspace-dl/blob/main/Dockerfile
