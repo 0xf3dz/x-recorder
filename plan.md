@@ -111,7 +111,7 @@ while true; do
     echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') Check @${TWITTER_ID}."
 
     /venv/bin/twspace_dl \
-        --user-url "https://twitter.com/${TWITTER_ID}" \
+        --user-url "https://x.com/${TWITTER_ID}" \
         --input-cookie-file "$COOKIE_FILE" \
         --output "$OUTPUT_FORMAT" \
         --write-metadata
@@ -140,7 +140,7 @@ Create `docker-compose.yml` with this content:
 ```yaml
 services:
   xspaces-recorder:
-    image: ghcr.io/holoarchivists/twspace-dl:latest
+    image: cjmaxik/twspace-dl:latest
     container_name: xspaces-recorder
     restart: unless-stopped
     user: "${PUID}:${PGID}"
@@ -311,6 +311,6 @@ Do not add automatic deletion until you define a retention period. Copy required
 
 ## Source references
 
-- `twspace-dl`: https://github.com/HoloArchivists/twspace-dl
-- Upstream monitor: https://github.com/HoloArchivists/twspace-dl/blob/main/monitor.sh
-- Upstream container file: https://github.com/HoloArchivists/twspace-dl/blob/main/Dockerfile
+- `twspace-dl`: https://github.com/cjmaxik/twspace-dl
+- Upstream monitor: https://github.com/cjmaxik/twspace-dl/blob/main/monitor.sh
+- Upstream container file: https://github.com/cjmaxik/twspace-dl/blob/main/Dockerfile

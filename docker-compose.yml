@@ -1,6 +1,6 @@
 services:
   xspaces-recorder:
-    image: ghcr.io/holoarchivists/twspace-dl:latest
+    image: cjmaxik/twspace-dl:latest
     container_name: xspaces-recorder
     restart: unless-stopped
     user: "${PUID}:${PGID}"
