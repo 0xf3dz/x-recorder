@@ -1,0 +1,24 @@
+services:
+  xspaces-recorder:
+    image: ghcr.io/holoarchivists/twspace-dl:latest
+    container_name: xspaces-recorder
+    restart: unless-stopped
+    user: "${PUID}:${PGID}"
+    env_file:
+      - .env
+    working_dir: /output
+    volumes:
+      - .:/output
+    entrypoint:
+      - dumb-init
+      - --
+      - sh
+    command:
+      - ./monitor.sh
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
