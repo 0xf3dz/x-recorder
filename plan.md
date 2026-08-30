@@ -111,7 +111,7 @@ while true; do
     echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') Check @${TWITTER_ID}."
 
     /venv/bin/twspace_dl \
-        --user-url "https://x.com/${TWITTER_ID}" \
+        --user-url "https://twitter.com/${TWITTER_ID}" \
         --input-cookie-file "$COOKIE_FILE" \
         --output "$OUTPUT_FORMAT" \
         --write-metadata
