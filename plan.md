@@ -222,23 +222,29 @@ docker compose logs -f xspaces-recorder
 During the Space, confirm that a file appears and grows:
 
 ```bash
-watch -n 5 'du -h recordings/* 2>/dev/null'
+watch -n 5 'du -h tmp*/*_new.m4a recordings/*.json 2>/dev/null'
 ```
+
+`TwspaceDL.download` writes active audio to `tmp*/<base-name>_new.m4a`.
+The final `recordings/<base-name>.m4a` appears after the Space ends.
 
 After the Space ends, inspect the result:
 
 ```bash
 find recordings -maxdepth 1 -type f -print
-ffprobe recordings/<recorded-file>
+docker compose exec xspaces-recorder \
+  ffmpeg -v error \
+  -i "/output/recordings/<recorded-file>.m4a" \
+  -f null -
 ```
 
 Acceptance criteria:
 
 - The monitor detects the Space without a Space URL.
-- The recording starts while the Space is live.
-- The final audio file opens with `ffprobe`.
-- The metadata file contains the Space identifier and host information.
-- A container restart does not delete prior recordings.
+- A `tmp*/<base-name>_new.m4a` file appears and grows while the Space is live.
+- A final decodable `.m4a` file appears after the Space ends.
+- The matching JSON metadata contains the Space identifier and host data.
+- Completed files remain after a container restart.
 
 ## Operations
 
