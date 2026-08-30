@@ -1,0 +1,5 @@
+.env
+cookies.txt
+recordings/*
+!recordings/.gitkeep
+/tmp*/
